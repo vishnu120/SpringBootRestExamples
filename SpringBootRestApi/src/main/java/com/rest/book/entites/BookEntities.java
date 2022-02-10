@@ -1,7 +1,16 @@
 package com.rest.book.entites;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="books_details")
 public class BookEntities {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int bookid;
 	private String bookname;
 	private String authorname;

@@ -51,10 +51,18 @@ public class BookController {
 	}
 
 	@PostMapping("/addBook")
-	public BookEntities addBooks(@RequestBody BookEntities book) {
-		System.out.println(book);
-		BookEntities b = this.bs.addBook(book);
-		return b;
+	public ResponseEntity addBooks(@RequestBody BookEntities book) {
+		BookEntities books = null;
+		try {
+			books = this.bs.addBook(book);
+			return ResponseEntity.of(Optional.of(books));
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+		
 	}
 
 	// delete the book with bookid
