@@ -14,7 +14,8 @@ import com.rest.book.entites.BookEntities;
 @Component
 public class BookService {
 	@Autowired
-     private BookRepository bookrepository;
+	private BookRepository bookrepository;
+
 	/*
 	 * private static List<BookEntities> list = new ArrayList<BookEntities>();
 	 * 
@@ -28,21 +29,21 @@ public class BookService {
 	 * }
 	 */
 	public List<BookEntities> getAllBook() {
-		 
-		List <BookEntities> list=(List<BookEntities>)this.bookrepository.findAll();
+
+		List<BookEntities> list = (List<BookEntities>) this.bookrepository.findAll();
 		return list;
 
 	}
 
 	public BookEntities getBookById(int id) {
-		BookEntities book =null;
+		BookEntities book = null;
 		book = this.bookrepository.findBybookid(id);
-        return book;
+		return book;
 	}
 
 	public BookEntities addBook(BookEntities book) {
 
-		BookEntities result =  bookrepository.save(book);
+		BookEntities result = bookrepository.save(book);
 		return result;
 	}
 
@@ -53,7 +54,7 @@ public class BookService {
 	}
 
 	public void updateBook(BookEntities book, int bookId) {
-        book.setBookid(bookId);
+		book.setBookid(bookId);
 		bookrepository.save(book);
 
 	}
